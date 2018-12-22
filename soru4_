@@ -1,0 +1,35 @@
+import math
+
+numara = False
+sonuc = []
+bütün = 5
+
+def sorgulamasırası(sayı):
+    g = []
+    for tekrar in range(int(math.log10(sayı) + 1)):
+
+        g.append(sayı % 10)
+        sayı //= 10
+    return g
+
+
+def dizikontrol(g1, g2):
+    for basamak in g1:
+        if basamak not in g2:
+            return False
+        return True
+while numara == False:
+    for numara1 in range(10 ** bütün, (10 ** (bütün + 1)) // 6):
+        a = sorgulamasırası(numara1)
+        b = sorgulamasırası(numara1*2)
+        c = sorgulamasırası(numara1*3)
+        d = sorgulamasırası(numara1*4)
+        e = sorgulamasırası(numara1*5)
+        h = sorgulamasırası(numara1*6)
+
+        if dizikontrol(a,b) == dizikontrol(a,c) == dizikontrol(a,d) == dizikontrol(a,h) == dizikontrol(a,e) == True:
+            print(numara1)
+            numara = True
+            sonuc.append(numara)
+    bütün += 1
+
